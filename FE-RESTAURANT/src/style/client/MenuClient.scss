@@ -1,0 +1,688 @@
+/* ===========================
+   WARM COLOR PALETTE - BRANCH OPTIMIZED
+=========================== */
+$primary-warm: #e07b39;           // Warm orange - main brand color
+$primary-dark: #c65a1f;           // Darker orange for hover states
+$primary-light: #f4a76c;          // Lighter orange for accents
+$secondary-warm: #f8b195;         // Secondary warm color
+$accent-gold: #ffd700;            // Gold accent for special elements
+
+$gray: #5a5a5a;                   // Primary text color
+$gray-light: #8a8a8a;             // Secondary text color
+$gray-lighter: #e0e0e0;           // Light gray for borders
+$gray-dark: #3a3a3a;              // Dark gray for emphasis
+
+$white: #ffffff;                   // Pure white
+$background-cream: #f8f5f0;       // Creamy background
+$hover-cream: #e9e2d8;            // Hover background
+$card-white: #fefefe;             // Card background
+
+$success: #3cb371;                 // Green for available status
+$warning: #ffa500;                 // Orange for warnings
+$error: #e74c3c;                   // Red for errors/discounts
+$info: #3498db;                    // Blue for information
+
+/* ===========================
+   SHADOWS & EFFECTS
+=========================== */
+$shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08);
+$shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+$shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.16);
+$shadow-warm: 0 6px 14px rgba(224, 123, 57, 0.18);
+$shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.2);
+
+/* ===========================
+   TYPOGRAPHY
+=========================== */
+$font-serif: "Playfair Display", "Times New Roman", serif;
+$font-sans: "Inter", "Segoe UI", -apple-system, sans-serif;
+$font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+/* ===========================
+   BREAKPOINTS
+=========================== */
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* ===========================
+   MENU PAGE WRAPPER
+=========================== */
+.menu-page-wrapper {
+  width: 100%;
+  background: linear-gradient(135deg, $background-cream 0%, #f0ebe0 100%);
+  padding-top: 8rem;   // pt-32 for fixed header
+  padding-bottom: 4rem; // pb-16
+  min-height: 100vh;
+  position: relative;
+
+  // Background pattern
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(224, 123, 57, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(248, 177, 149, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+
+    @media (min-width: $breakpoint-md) {
+      padding: 0 3rem;
+    }
+
+    @media (min-width: $breakpoint-xl) {
+      padding: 0 4rem;
+    }
+  }
+}
+
+/* ===========================
+   HEADER SECTION
+=========================== */
+.menu-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.8s ease-out;
+
+  .main-title {
+    font-family: $font-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: $primary-warm;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, $primary-warm, transparent);
+      border-radius: 2px;
+    }
+  }
+
+  .subtitle {
+    color: $gray;
+    font-size: 1.125rem;
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+}
+
+/* ===========================
+   BRANCH SELECTOR
+=========================== */
+.branch-selector {
+  margin: 2rem 0 3rem;
+  text-align: center;
+  animation: slideInLeft 0.8s ease-out 0.2s both;
+
+  .selector-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $gray;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .branch-select {
+    position: relative;
+    display: inline-block;
+    min-width: 280px;
+
+    select {
+      appearance: none;
+      background: $white;
+      border: 2px solid $gray-lighter;
+      border-radius: 12px;
+      padding: 1rem 3rem 1rem 1.5rem;
+      font-size: 1rem;
+      color: $gray;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: $shadow-soft;
+      width: 100%;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-warm;
+        box-shadow: 0 0 0 3px rgba(224, 123, 57, 0.1);
+      }
+
+      &:hover {
+        border-color: $primary-light;
+        box-shadow: $shadow-medium;
+      }
+    }
+
+    &::after {
+      content: '▼';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $primary-warm;
+      font-size: 0.75rem;
+      pointer-events: none;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  .loading-state {
+    color: $gray-light;
+    font-style: italic;
+    padding: 1rem;
+  }
+
+  .error-state {
+    color: $error;
+    padding: 1rem;
+    background: rgba(231, 76, 60, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(231, 76, 60, 0.2);
+  }
+}
+
+/* ===========================
+   CATEGORY FILTERS
+=========================== */
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem 0 3rem;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+
+  .filter-button {
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 25px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    background: $white;
+    color: $gray;
+    box-shadow: $shadow-soft;
+
+    // Hover effect with gradient
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s ease;
+    }
+
+    &:hover::before {
+      left: 100%;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-medium;
+      border-color: $primary-light;
+    }
+
+    // Active state
+    &.active {
+      background: linear-gradient(135deg, $primary-warm, $primary-dark);
+      color: $white;
+      border-color: $primary-warm;
+      box-shadow: $shadow-warm;
+
+      &:hover {
+        background: linear-gradient(135deg, $primary-dark, adjust-color($primary-dark, $lightness: -5%));
+        transform: translateY(-1px);
+      }
+    }
+
+    // Focus state for accessibility
+    &:focus-visible {
+      outline: 3px solid rgba(224, 123, 57, 0.3);
+      outline-offset: 2px;
+    }
+
+    // Loading state
+    &.loading {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: $breakpoint-sm) {
+    gap: 0.5rem;
+    
+    .filter-button {
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+    }
+  }
+}
+
+/* ===========================
+   CONTENT SECTIONS
+=========================== */
+.content-section {
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+
+  .section-title {
+    font-family: $font-serif;
+    font-size: 2rem;
+    color: $primary-warm;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    font-weight: 600;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, $primary-warm, transparent);
+      border-radius: 2px;
+    }
+
+    // Decorative elements
+    &::before {
+      content: '✦';
+      position: absolute;
+      left: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $accent-gold;
+      font-size: 1.5rem;
+      opacity: 0.6;
+    }
+
+    &::after {
+      content: '✦';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $accent-gold;
+      font-size: 1.5rem;
+      opacity: 0.6;
+    }
+  }
+}
+
+/* ===========================
+   MENU GRID
+=========================== */
+.menu-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem;
+  }
+}
+
+/* ===========================
+   LOADING & ERROR STATES
+=========================== */
+.state-container {
+  text-align: center;
+  padding: 3rem 1rem;
+  animation: fadeInUp 0.6s ease-out;
+
+  .loading-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid $gray-lighter;
+    border-radius: 50%;
+    border-top-color: $primary-warm;
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  .error-message {
+    color: $error;
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.2);
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    display: inline-block;
+    font-weight: 500;
+  }
+
+  .empty-state {
+    color: $gray-light;
+    font-style: italic;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 12px;
+    border: 2px dashed $gray-lighter;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===========================
+   PAGINATION
+=========================== */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 3rem 0 2rem;
+  padding: 2rem 0;
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+
+  .pagination-button {
+    appearance: none;
+    border: 2px solid $gray-lighter;
+    background: $white;
+    color: $gray;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 44px;
+    box-shadow: $shadow-soft;
+
+    &:hover:not(:disabled) {
+      background: $hover-cream;
+      border-color: $primary-light;
+      transform: translateY(-1px);
+      box-shadow: $shadow-medium;
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    // Current page
+    &.current {
+      background: linear-gradient(135deg, $primary-warm, $primary-dark);
+      color: $white;
+      border-color: $primary-warm;
+      box-shadow: $shadow-warm;
+    }
+
+         // Disabled state
+     &:disabled,
+     &.disabled {
+       background: $gray-lighter;
+       color: $gray-light;
+       border-color: $gray-lighter;
+       cursor: not-allowed;
+       box-shadow: none;
+       transform: none;
+     }
+
+    // Focus state
+    &:focus-visible {
+      outline: 3px solid rgba(224, 123, 57, 0.3);
+      outline-offset: 2px;
+    }
+  }
+
+  // Navigation buttons (Previous/Next)
+  .nav-button {
+    font-weight: 700;
+    min-width: 80px;
+  }
+}
+
+/* ===========================
+   PAGE INFO
+=========================== */
+.page-info {
+  text-align: center;
+  margin: 2rem 0;
+  color: $gray-light;
+  font-size: 0.875rem;
+  font-weight: 500;
+  animation: fadeInUp 0.8s ease-out 1s both;
+
+  .info-text {
+    background: rgba(0, 0, 0, 0.03);
+    padding: 0.75rem 1.5rem;
+    border-radius: 20px;
+    display: inline-block;
+    border: 1px solid $gray-lighter;
+
+    .highlight {
+      color: $primary-warm;
+      font-weight: 700;
+    }
+  }
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+=========================== */
+@media (max-width: $breakpoint-sm) {
+  .menu-page-wrapper {
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+
+    .container {
+      padding: 0 1rem;
+    }
+  }
+
+  .menu-header {
+    .main-title {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .branch-selector {
+    .branch-select {
+      min-width: 100%;
+      max-width: 280px;
+    }
+  }
+
+  .category-filters {
+    gap: 0.5rem;
+    
+    .filter-button {
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  .menu-grid {
+    gap: 1.5rem;
+  }
+
+  .pagination-container {
+    gap: 0.25rem;
+    
+    .pagination-button {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.75rem;
+      min-width: 36px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .content-section {
+    .section-title {
+      font-size: 1.75rem;
+      
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+/* ===========================
+   ACCESSIBILITY & FOCUS MANAGEMENT
+=========================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .menu-page-wrapper {
+    background: $white;
+    
+    .main-title,
+    .section-title {
+      color: #000;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===========================
+   UTILITY CLASSES
+=========================== */
+.text-primary { color: $primary-warm; }
+.text-secondary { color: $gray; }
+.text-accent { color: $accent-gold; }
+.text-success { color: $success; }
+.text-warning { color: $warning; }
+.text-error { color: $error; }
+
+.bg-primary { background-color: $primary-warm; }
+.bg-secondary { background-color: $gray; }
+.bg-accent { background-color: $accent-gold; }
+.bg-success { background-color: $success; }
+.bg-warning { background-color: $warning; }
+.bg-error { background-color: $error; }
+
+.shadow-soft { box-shadow: $shadow-soft; }
+.shadow-medium { box-shadow: $shadow-medium; }
+.shadow-strong { box-shadow: $shadow-strong; }
+.shadow-warm { box-shadow: $shadow-warm; }
+
+.rounded-sm { border-radius: 4px; }
+.rounded-md { border-radius: 8px; }
+.rounded-lg { border-radius: 12px; }
+.rounded-xl { border-radius: 16px; }
+.rounded-full { border-radius: 9999px; }

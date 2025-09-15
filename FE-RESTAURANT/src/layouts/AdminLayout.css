@@ -1,0 +1,110 @@
+/* Admin Layout Styles */
+.admin-layout {
+  min-height: 100vh;
+  height: 100vh;
+  background: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.admin-container {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 70px); /* Trừ đi chiều cao của header */
+}
+
+.admin-main {
+  flex: 1;
+  background: #f5f5f7;
+  overflow-y: auto;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 2rem;
+}
+
+/* Content area styling */
+.admin-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(245, 245, 247, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
+  z-index: -1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .admin-container {
+    flex-direction: column;
+    height: calc(100vh - 60px); /* Header nhỏ hơn trên mobile */
+  }
+  
+  .admin-main {
+    padding: 1rem;
+  }
+}
+
+/* Scrollbar styling for main content */
+.admin-main::-webkit-scrollbar {
+  width: 8px;
+}
+
+.admin-main::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+}
+
+.admin-main::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.admin-main::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Animation for page transitions */
+.admin-main {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure header stays on top */
+.admin-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Sidebar adjustments for header */
+.admin-sidebar {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Mobile optimizations */
+@media (max-width: 576px) {
+  .admin-main {
+    padding: 0.5rem;
+  }
+  
+  .admin-container {
+    height: calc(100vh - 60px);
+  }
+}

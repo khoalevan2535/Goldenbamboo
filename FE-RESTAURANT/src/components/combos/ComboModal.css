@@ -1,0 +1,9 @@
+.combo-modal-xl .modal-dialog {
+  max-width: 1200px;
+}
+
+.combo-modal-xl .modal-body {
+  max-height: 75vh;
+  overflow: auto;
+}
+

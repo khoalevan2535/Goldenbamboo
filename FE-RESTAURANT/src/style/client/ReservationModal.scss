@@ -1,0 +1,126 @@
+$primary-warm: #e07b39; // Warm orange (matches --earthy-red)
+$hover-warm: #6d3710; // Darker brown for hover
+$secondary-warm: #f4a261; // Soft peach
+$background-cream: #f8f5f0; // Creamy background
+$gray: #5a5a5a; // Gray for secondary text
+$gray-light: #d1d5db; // Light gray for borders
+$gray-dark: #374151; // Darker gray for text
+$white: #ffffff; // White
+
+.reservation-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+  }
+
+  .modal-content {
+    position: relative;
+    background-color: $white;
+    width: 100%;
+    max-width: 28rem; // max-w-md
+    margin: 0 1rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+
+    .close-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: $gray;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $gray-dark;
+      }
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+    h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.5rem;
+      color: $primary-warm;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: $gray;
+          margin-bottom: 0.25rem;
+        }
+
+        input,
+        select {
+          width: 100%;
+          padding: 0.5rem 0.75rem;
+          border: 1px solid $gray-light;
+          border-radius: 0.25rem;
+          font-size: 1rem;
+          outline: none;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+          &:focus {
+            border-color: $primary-warm;
+            box-shadow: 0 0 0 2px rgba(224, 123, 57, 0.3);
+          }
+        }
+      }
+
+      .submit-button {
+        padding: 0.75rem 1rem;
+        background-color: $primary-warm;
+        color: $white;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: $hover-warm;
+        }
+      }
+    }
+  }
+}

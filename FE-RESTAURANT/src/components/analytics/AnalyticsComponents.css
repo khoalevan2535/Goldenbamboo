@@ -1,0 +1,323 @@
+/* Analytics Components Styles */
+
+/* KPI Cards */
+.kpi-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.kpi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.kpi-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background: rgba(0, 123, 255, 0.1);
+}
+
+.kpi-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem 0;
+  color: #2c3e50;
+}
+
+.kpi-label {
+  color: #6c757d;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* Chart Cards */
+.chart-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.chart-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Branch Ranking Table */
+.branch-ranking-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.branch-row:hover {
+  background-color: #f8f9fa;
+}
+
+.branch-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+}
+
+.branch-name {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.percentage-text {
+  font-weight: 500;
+  color: #495057;
+  min-width: 50px;
+}
+
+/* Top Selling Items Table */
+.top-selling-items-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.item-row:hover {
+  background-color: #f8f9fa;
+}
+
+.dish-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+}
+
+.dish-name {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.trend-icon {
+  font-size: 1.2rem;
+}
+
+.performance-indicator {
+  margin-bottom: 0.25rem;
+}
+
+/* Table Enhancements */
+.table th {
+  background: #f8f9fa;
+  border-top: none;
+  font-weight: 600;
+  color: #495057;
+  padding: 1rem;
+}
+
+.table td {
+  padding: 1rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Progress Bars */
+.progress {
+  height: 8px;
+  border-radius: 4px;
+}
+
+.progress-bar {
+  border-radius: 4px;
+}
+
+/* Badge Enhancements */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .kpi-value {
+    font-size: 1.5rem;
+  }
+  
+  .kpi-icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .chart-card {
+    padding: 1rem;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .branch-icon,
+  .dish-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .kpi-card {
+    margin-bottom: 1rem;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .percentage-text {
+    min-width: 40px;
+    font-size: 0.8rem;
+  }
+  
+  .trend-icon {
+    font-size: 1rem;
+  }
+}
+
+/* Animation Effects */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kpi-card,
+.chart-card,
+.branch-ranking-table,
+.top-selling-items-table {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Loading States */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  z-index: 10;
+}
+
+/* Empty States */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6c757d;
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-state-text {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state-subtext {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Success States */
+.success-indicator {
+  color: #28a745;
+  font-weight: 600;
+}
+
+/* Warning States */
+.warning-indicator {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+/* Info States */
+.info-indicator {
+  color: #17a2b8;
+  font-weight: 600;
+}
+
+/* Custom Scrollbar */
+.table-responsive::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Print Styles */
+@media print {
+  .kpi-card,
+  .chart-card,
+  .branch-ranking-table,
+  .top-selling-items-table {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background: #f8f9fa !important;
+    color: #000 !important;
+  }
+  
+  .badge {
+    border: 1px solid #000;
+    color: #000 !important;
+  }
+}

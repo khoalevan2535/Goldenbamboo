@@ -1,0 +1,145 @@
+// Warm color palette (consistent with ClientHeader.scss and Footer.scss)
+$primary-warm: #e07b39; // Warm orange (matches --earthy-red)
+$secondary-warm: #f4a261; // Soft peach (matches #d9a566)
+$background-cream: #f8f5f0; // Creamy background (matches --beige from Navbar example)
+$gray: #5a5a5a; // Gray for secondary text (matches --gray)
+$white: #ffffff; // White
+
+// About Page
+div.w-full {
+  width: 100%;
+  background-color: $background-cream;
+  padding-top: 8rem; // pt-32 for fixed header
+  padding-bottom: 4rem; // pb-16
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+
+    @media (min-width: 768px) {
+      padding: 0 3rem;
+    }
+
+    // Header Section
+    .text-center.mb-16 {
+      margin-bottom: 4rem;
+
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.25rem;
+        color: $primary-warm;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: $gray;
+        font-size: 1.125rem;
+        line-height: 1.6;
+        max-width: 32rem;
+        margin: 0 auto;
+      }
+    }
+
+    // Chef Section
+    .mt-16.grid {
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      div {
+        h2 {
+          font-family: "Playfair Display", serif;
+          font-size: 1.875rem;
+          color: $primary-warm;
+          margin-bottom: 1.5rem;
+        }
+
+        p {
+          color: $gray;
+          font-size: 1rem;
+          line-height: 1.6;
+          margin-bottom: 1.5rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .relative {
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 0.5rem;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        div {
+          position: absolute;
+          bottom: -1.5rem;
+          left: -1.5rem;
+          width: 6rem;
+          height: 6rem;
+          background-color: $secondary-warm;
+          border-radius: 0.5rem;
+          z-index: -1;
+
+          @media (min-width: 768px) {
+            width: 8rem;
+            height: 8rem;
+          }
+        }
+      }
+    }
+
+    // Values Section
+    .mt-20 {
+      margin-top: 5rem;
+
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.875rem;
+        color: $primary-warm;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @media (min-width: 768px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        div {
+          background-color: $white;
+          padding: 2rem;
+          border-radius: 0.5rem;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+          h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.25rem;
+            color: $primary-warm;
+            margin-bottom: 1rem;
+          }
+
+          p {
+            color: $gray;
+            font-size: 1rem;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+  }
+}

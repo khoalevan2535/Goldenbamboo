@@ -1,0 +1,575 @@
+/* ===========================
+   WARM COLOR PALETTE - BRANCH OPTIMIZED
+=========================== */
+$primary-warm: #e07b39;           // Warm orange - main brand color
+$primary-dark: #c65a1f;           // Darker orange for hover states
+$primary-light: #f4a76c;          // Lighter orange for accents
+$secondary-warm: #f8b195;         // Secondary warm color
+$accent-gold: #ffd700;            // Gold accent for special elements
+
+$gray: #5a5a5a;                   // Primary text color
+$gray-light: #8a8a8a;             // Secondary text color
+$gray-lighter: #e0e0e0;           // Light gray for borders
+$gray-dark: #3a3a3a;              // Dark gray for emphasis
+
+$white: #ffffff;                   // Pure white
+$card-white: #fefefe;             // Card background
+$background-cream: #f8f5f0;       // Creamy background
+$hover-cream: #e9e2d8;            // Hover background
+
+$success: #3cb371;                 // Green for available status
+$warning: #ffa500;                 // Orange for warnings
+$error: #e74c3c;                   // Red for errors/discounts
+$info: #3498db;                    // Blue for information
+
+/* ===========================
+   SHADOWS & EFFECTS
+=========================== */
+$shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08);
+$shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+$shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.16);
+$shadow-warm: 0 6px 14px rgba(224, 123, 57, 0.18);
+$shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.2);
+
+/* ===========================
+   TYPOGRAPHY
+=========================== */
+$font-serif: "Playfair Display", "Times New Roman", serif;
+$font-sans: "Inter", "Segoe UI", -apple-system, sans-serif;
+
+/* ===========================
+   BREAKPOINTS
+=========================== */
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* ===========================
+   MENU CARD COMPONENT
+=========================== */
+.menu-card {
+  background: $card-white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: $shadow-soft;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: scaleIn 0.6s ease-out;
+  border: 1px solid rgba(224, 123, 57, 0.1);
+
+  // Hover effects
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-hover;
+    border-color: rgba(224, 123, 57, 0.2);
+
+    .menu-image {
+      img {
+        transform: scale(1.1);
+      }
+
+      .overlay {
+        opacity: 0.4;
+      }
+    }
+
+    .menu-content {
+      h3 {
+        color: $primary-dark;
+      }
+    }
+
+
+    .action-section button.available {
+      background: linear-gradient(135deg, $primary-warm, $primary-dark);
+      color: $white;
+      transform: translateY(-2px);
+      box-shadow: $shadow-warm;
+    }
+  }
+
+  // Focus state for accessibility
+  &:focus-visible {
+    outline: 3px solid rgba(224, 123, 57, 0.3);
+    outline-offset: 2px;
+    transform: translateY(-4px);
+  }
+
+  /* ===========================
+     IMAGE SECTION
+  =========================== */
+  .menu-image {
+    position: relative;
+    height: 16rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, $background-cream, $hover-cream);
+
+    @media (max-width: $breakpoint-sm) {
+      height: 12rem;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+
+      &.scale-110 {
+        transform: scale(1.1);
+      }
+
+      &.scale-100 {
+        transform: scale(1);
+      }
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.2) 50%,
+        rgba(0, 0, 0, 0.1) 100%
+      );
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+
+      &.opacity-30 {
+        opacity: 0.3;
+      }
+
+      &.opacity-0 {
+        opacity: 0;
+      }
+    }
+
+    /* ===========================
+       STATUS BADGES
+    =========================== */
+    .status-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: linear-gradient(135deg, $success, adjust-color($success, $lightness: -10%));
+      color: $white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.5rem 0.75rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(60, 179, 113, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: linear-gradient(135deg, $error, adjust-color($error, $lightness: -10%));
+      color: $white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.5rem 0.75rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: pulse 2s ease-in-out infinite;
+    }
+  }
+
+  /* ===========================
+     CONTENT SECTION
+  =========================== */
+  .menu-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: $card-white;
+
+    @media (max-width: $breakpoint-sm) {
+      padding: 1rem;
+    }
+
+    h3 {
+      font-family: $font-serif;
+      font-size: 1.25rem;
+      color: $primary-warm;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      line-height: 1.3;
+      transition: color 0.3s ease;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      @media (max-width: $breakpoint-sm) {
+        font-size: 1.1rem;
+      }
+    }
+
+    p.description {
+      color: $gray;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+
+      @media (max-width: $breakpoint-sm) {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    /* ===========================
+       MENU FOOTER
+    =========================== */
+    .menu-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-top: auto;
+      @media (max-width: $breakpoint-sm) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+      }
+
+
+      /* ===========================
+         PRICE SECTION
+      =========================== */
+      .price-section {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+
+        .original-price {
+          font-size: 0.875rem;
+          color: lighten($gray, 25%);
+          text-decoration: line-through;
+          font-weight: 500;
+        }
+
+        .final-price {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: $error;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .price {
+          font-size: 1.125rem;
+          font-weight: 700;
+          color: $primary-warm;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      /* ===========================
+         ACTION SECTION
+      =========================== */
+      .action-section {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-shrink: 0;
+
+        .cart-count {
+          background: linear-gradient(135deg, $primary-warm, $primary-dark);
+          color: $white;
+          font-size: 0.75rem;
+          font-weight: 600;
+          padding: 0.5rem 0.75rem;
+          border-radius: 20px;
+          min-width: 24px;
+          text-align: center;
+          box-shadow: $shadow-soft;
+          animation: scaleIn 0.3s ease-out;
+        }
+
+        button, .add-to-cart-btn {
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          padding: 0.75rem 1.25rem;
+          border-radius: 25px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          border: 2px solid transparent;
+          font-weight: 600;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          min-width: 120px;
+          text-align: center;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+
+          // Shimmer effect on hover
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+          }
+
+          &:hover::before {
+            left: 100%;
+          }
+
+          &.available {
+            background: transparent;
+            color: $primary-warm;
+            border-color: $primary-warm;
+            box-shadow: $shadow-soft;
+
+            &:hover {
+              background: linear-gradient(135deg, $primary-warm, $primary-dark);
+              color: $white;
+              border-color: $primary-warm;
+              transform: translateY(-2px);
+              box-shadow: $shadow-warm;
+            }
+
+            &:active {
+              transform: translateY(0);
+            }
+          }
+
+          &.unavailable {
+            background: #dc3545;
+            color: $white;
+            cursor: not-allowed;
+            border-color: #dc3545;
+            box-shadow: none;
+            opacity: 0.6;
+
+            &:hover {
+              background: #dc3545;
+              color: $white;
+              transform: none;
+              box-shadow: none;
+            }
+          }
+          // Trạng thái loading
+          &:disabled:not(.unavailable) {
+            background: #ffc107;
+            color: #212529;
+            border-color: #ffc107;
+          }
+          // Focus state
+          &:focus-visible {
+            outline: 3px solid rgba(224, 123, 57, 0.3);
+            outline-offset: 2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+=========================== */
+@media (max-width: $breakpoint-sm) {
+  .menu-card {
+    border-radius: 12px;
+
+    .menu-image {
+      height: 10rem;
+    }
+
+    .menu-content {
+      padding: 0.75rem;
+
+      h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p.description {
+        font-size: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .menu-footer {
+        .price-section {
+          .original-price {
+            font-size: 0.8rem;
+          }
+
+          .final-price {
+            font-size: 1.1rem;
+          }
+
+          .price {
+            font-size: 1rem;
+          }
+        }
+
+        .action-section {
+          button {
+            padding: 0.5rem 1rem;
+            font-size: 0.7rem;
+            min-width: 100px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .menu-card {
+    .menu-image {
+      height: 14rem;
+    }
+  }
+}
+
+/* ===========================
+   ACCESSIBILITY & FOCUS MANAGEMENT
+=========================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .menu-card {
+    border: 2px solid $gray-dark;
+    
+    .menu-content h3 {
+      color: #000;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .menu-card,
+  .menu-card *,
+  .menu-card *::before,
+  .menu-card *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===========================
+   UTILITY CLASSES
+=========================== */
+.text-primary { color: $primary-warm; }
+.text-secondary { color: $gray; }
+.text-accent { color: $accent-gold; }
+.text-success { color: $success; }
+.text-warning { color: $warning; }
+.text-error { color: $error; }
+
+.bg-primary { background-color: $primary-warm; }
+.bg-secondary { background-color: $gray; }
+.bg-accent { background-color: $accent-gold; }
+.bg-success { background-color: $success; }
+.bg-warning { background-color: $warning; }
+.bg-error { background-color: $error; }
+
+.shadow-soft { box-shadow: $shadow-soft; }
+.shadow-medium { box-shadow: $shadow-medium; }
+.shadow-strong { box-shadow: $shadow-strong; }
+.shadow-warm { box-shadow: $shadow-warm; }
+
+.rounded-sm { border-radius: 4px; }
+.rounded-md { border-radius: 8px; }
+.rounded-lg { border-radius: 12px; }
+.rounded-xl { border-radius: 16px; }
+.rounded-full { border-radius: 9999px; }

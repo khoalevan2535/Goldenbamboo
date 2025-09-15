@@ -1,0 +1,403 @@
+// Quick Reorder Styles
+.quick-reorder {
+  margin-bottom: 2rem;
+
+  .quick-reorder-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+
+    h4 {
+      margin: 0;
+      color: #495057;
+      font-size: 1.25rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+
+      svg {
+        color: #007bff;
+      }
+    }
+
+    .count-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+
+  .quick-reorder-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6c757d;
+
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+      color: #007bff;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    small {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  }
+
+  .quick-reorder-grid {
+    .quick-reorder-item {
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border-color: #007bff;
+      }
+
+      .order-header {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        color: white;
+        border: none;
+        padding: 1rem;
+
+        .order-info {
+          .order-id {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+          }
+
+          .order-time {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+
+            svg {
+              font-size: 0.7rem;
+            }
+          }
+        }
+
+        .order-total {
+          font-size: 1.1rem;
+          font-weight: 700;
+          text-align: right;
+        }
+      }
+
+      .order-body {
+        padding: 1rem;
+
+        .order-location {
+          color: #6c757d;
+          font-size: 0.85rem;
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+
+          svg {
+            color: #dc3545;
+            font-size: 0.8rem;
+          }
+        }
+
+        .order-items {
+          .items-header {
+            margin-bottom: 0.75rem;
+
+            .items-count {
+              font-size: 0.9rem;
+              font-weight: 600;
+              color: #495057;
+            }
+          }
+
+          .items-list {
+            .item-preview {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 0.5rem 0;
+              border-bottom: 1px solid #f8f9fa;
+
+              &:last-child {
+                border-bottom: none;
+              }
+
+              .item-info {
+                flex: 1;
+                min-width: 0;
+
+                .item-name {
+                  display: block;
+                  font-size: 0.85rem;
+                  color: #495057;
+                  font-weight: 500;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
+
+                .item-qty {
+                  font-size: 0.75rem;
+                  color: #6c757d;
+                }
+              }
+
+              .item-price {
+                font-size: 0.8rem;
+                font-weight: 600;
+                color: #dc3545;
+                margin-left: 0.5rem;
+                flex-shrink: 0;
+              }
+            }
+
+            .more-items {
+              text-align: center;
+              font-size: 0.8rem;
+              color: #6c757d;
+              font-style: italic;
+              padding: 0.5rem 0;
+              border-top: 1px solid #f8f9fa;
+              margin-top: 0.5rem;
+            }
+          }
+        }
+      }
+
+      .order-footer {
+        background: #f8f9fa;
+        border-top: 1px solid #e9ecef;
+        padding: 0.75rem 1rem;
+
+        .reorder-btn {
+          width: 100%;
+          font-weight: 600;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+          }
+
+          &:disabled {
+            transform: none;
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+
+  .quick-reorder-more {
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+
+    small {
+      font-size: 0.8rem;
+      color: #6c757d;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .quick-reorder {
+    .quick-reorder-header {
+      h4 {
+        font-size: 1.1rem;
+      }
+    }
+
+    .quick-reorder-grid {
+      .quick-reorder-item {
+        .order-header {
+          padding: 0.75rem;
+
+          .order-info {
+            .order-id {
+              font-size: 0.9rem;
+            }
+
+            .order-time {
+              font-size: 0.75rem;
+            }
+          }
+
+          .order-total {
+            font-size: 1rem;
+          }
+        }
+
+        .order-body {
+          padding: 0.75rem;
+
+          .order-location {
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+          }
+
+          .order-items {
+            .items-header {
+              margin-bottom: 0.5rem;
+
+              .items-count {
+                font-size: 0.85rem;
+              }
+            }
+
+            .items-list {
+              .item-preview {
+                padding: 0.4rem 0;
+
+                .item-info {
+                  .item-name {
+                    font-size: 0.8rem;
+                  }
+
+                  .item-qty {
+                    font-size: 0.7rem;
+                  }
+                }
+
+                .item-price {
+                  font-size: 0.75rem;
+                }
+              }
+
+              .more-items {
+                font-size: 0.75rem;
+                padding: 0.4rem 0;
+              }
+            }
+          }
+        }
+
+        .order-footer {
+          padding: 0.5rem 0.75rem;
+
+          .reorder-btn {
+            font-size: 0.85rem;
+            padding: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .quick-reorder {
+    .quick-reorder-header {
+      border-bottom-color: #495057;
+
+      h4 {
+        color: #e9ecef;
+
+        svg {
+          color: #007bff;
+        }
+      }
+    }
+
+    .quick-reorder-empty {
+      color: #adb5bd;
+
+      .empty-icon {
+        color: #007bff;
+      }
+    }
+
+    .quick-reorder-grid {
+      .quick-reorder-item {
+        background: #343a40;
+        border-color: #495057;
+
+        &:hover {
+          border-color: #007bff;
+        }
+
+        .order-body {
+          .order-location {
+            color: #adb5bd;
+
+            svg {
+              color: #ff6b6b;
+            }
+          }
+
+          .order-items {
+            .items-header {
+              .items-count {
+                color: #e9ecef;
+              }
+            }
+
+            .items-list {
+              .item-preview {
+                border-bottom-color: #495057;
+
+                .item-info {
+                  .item-name {
+                    color: #e9ecef;
+                  }
+
+                  .item-qty {
+                    color: #adb5bd;
+                  }
+                }
+
+                .item-price {
+                  color: #ff6b6b;
+                }
+              }
+
+              .more-items {
+                color: #adb5bd;
+                border-top-color: #495057;
+              }
+            }
+          }
+        }
+
+        .order-footer {
+          background: #495057;
+          border-top-color: #6c757d;
+        }
+      }
+    }
+
+    .quick-reorder-more {
+      border-top-color: #495057;
+
+      small {
+        color: #adb5bd;
+      }
+    }
+  }
+}
+
+
+
+
+
+

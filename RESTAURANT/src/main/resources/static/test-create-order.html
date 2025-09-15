@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Create Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .item-row {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+        }
+        .remove-item {
+            background-color: #dc3545;
+        }
+        .remove-item:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Create Order</h1>
+    
+    <div class="container">
+        <h2>Order Information</h2>
+        <form id="orderForm">
+            <div class="form-group">
+                <label for="tableId">Table ID:</label>
+                <input type="number" id="tableId" name="tableId" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="customerPhone">Customer Phone:</label>
+                <input type="text" id="customerPhone" name="customerPhone" placeholder="0123456789">
+            </div>
+            
+            <div class="form-group">
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes" rows="3" placeholder="Ghi chú đơn hàng"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" name="paymentMethod">
+                    <option value="CASH">Cash</option>
+                    <option value="CARD">Card</option>
+                    <option value="BANK_TRANSFER">Bank Transfer</option>
+                    <option value="E_WALLET">E-Wallet</option>
+                    <option value="OTHER">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="discountId">Discount ID (optional):</label>
+                <input type="number" id="discountId" name="discountId">
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Order Items</h2>
+        <div id="itemsContainer">
+            <div class="item-row">
+                <div class="form-group">
+                    <label>Menu Dish ID:</label>
+                    <input type="number" class="menuDishId" required>
+                </div>
+                <div class="form-group">
+                    <label>Quantity:</label>
+                    <input type="number" class="quantity" value="1" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Notes:</label>
+                    <input type="text" class="itemNotes" placeholder="Ghi chú cho món này">
+                </div>
+                <button type="button" class="remove-item" onclick="removeItem(this)">Remove Item</button>
+            </div>
+        </div>
+        <button type="button" onclick="addItem()">Add Item</button>
+    </div>
+
+    <div class="container">
+        <h2>Actions</h2>
+        <button onclick="createOrder()">Create Order</button>
+        <button onclick="getTodayUnpaidOrders()">Get Today's Unpaid Orders</button>
+        <button onclick="clearForm()">Clear Form</button>
+    </div>
+
+    <div class="container">
+        <h2>Results</h2>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function addItem() {
+            const container = document.getElementById('itemsContainer');
+            const itemRow = document.createElement('div');
+            itemRow.className = 'item-row';
+            itemRow.innerHTML = `
+                <div class="form-group">
+                    <label>Menu Dish ID:</label>
+                    <input type="number" class="menuDishId" required>
+                </div>
+                <div class="form-group">
+                    <label>Quantity:</label>
+                    <input type="number" class="quantity" value="1" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Notes:</label>
+                    <input type="text" class="itemNotes" placeholder="Ghi chú cho món này">
+                </div>
+                <button type="button" class="remove-item" onclick="removeItem(this)">Remove Item</button>
+            `;
+            container.appendChild(itemRow);
+        }
+
+        function removeItem(button) {
+            button.parentElement.remove();
+        }
+
+        function getFormData() {
+            const form = document.getElementById('orderForm');
+            const formData = new FormData(form);
+            
+            const orderData = {
+                tableId: parseInt(formData.get('tableId')),
+                customerPhone: formData.get('customerPhone') || null,
+                notes: formData.get('notes') || null,
+                paymentMethod: formData.get('paymentMethod'),
+                discountId: formData.get('discountId') ? parseInt(formData.get('discountId')) : null,
+                items: []
+            };
+
+            // Get items
+            const itemRows = document.querySelectorAll('.item-row');
+            itemRows.forEach(row => {
+                const menuDishId = row.querySelector('.menuDishId').value;
+                const quantity = row.querySelector('.quantity').value;
+                const itemNotes = row.querySelector('.itemNotes').value;
+                
+                if (menuDishId && quantity) {
+                    orderData.items.push({
+                        menuDishId: parseInt(menuDishId),
+                        quantity: parseInt(quantity),
+                        notes: itemNotes || null
+                    });
+                }
+            });
+
+            return orderData;
+        }
+
+        async function createOrder() {
+            const orderData = getFormData();
+            
+            try {
+                showResult('Creating order...', 'info');
+                
+                const response = await fetch('/api/staff/orders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderData)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    showResult('✅ Order created successfully!\n\n' + JSON.stringify(result, null, 2), 'success');
+                } else {
+                    const errorText = await response.text();
+                    showResult('❌ Failed to create order:\n' + errorText, 'error');
+                }
+            } catch (error) {
+                showResult('❌ Error: ' + error.message, 'error');
+            }
+        }
+
+        async function getTodayUnpaidOrders() {
+            try {
+                showResult('Getting today\'s unpaid orders...', 'info');
+                
+                const response = await fetch('/api/staff/orders/today-unpaid', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    showResult('✅ Today\'s unpaid orders:\n\n' + JSON.stringify(result, null, 2), 'success');
+                } else {
+                    const errorText = await response.text();
+                    showResult('❌ Failed to get orders:\n' + errorText, 'error');
+                }
+            } catch (error) {
+                showResult('❌ Error: ' + error.message, 'error');
+            }
+        }
+
+        function clearForm() {
+            document.getElementById('orderForm').reset();
+            const itemsContainer = document.getElementById('itemsContainer');
+            itemsContainer.innerHTML = `
+                <div class="item-row">
+                    <div class="form-group">
+                        <label>Menu Dish ID:</label>
+                        <input type="number" class="menuDishId" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity:</label>
+                        <input type="number" class="quantity" value="1" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Notes:</label>
+                        <input type="text" class="itemNotes" placeholder="Ghi chú cho món này">
+                    </div>
+                    <button type="button" class="remove-item" onclick="removeItem(this)">Remove Item</button>
+                </div>
+            `;
+            showResult('Form cleared', 'info');
+        }
+
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = message;
+            resultDiv.className = 'result ' + type;
+        }
+
+        function getAuthToken() {
+            // In a real application, you would get this from your authentication system
+            // For testing purposes, you might need to implement proper authentication
+            return localStorage.getItem('authToken') || 'your-auth-token-here';
+        }
+
+        // Sample data for testing
+        function loadSampleData() {
+            document.getElementById('tableId').value = '1';
+            document.getElementById('customerPhone').value = '0123456789';
+            document.getElementById('notes').value = 'Test order from web interface';
+            document.getElementById('paymentMethod').value = 'CASH';
+            
+            // Add sample items
+            const itemsContainer = document.getElementById('itemsContainer');
+            itemsContainer.innerHTML = `
+                <div class="item-row">
+                    <div class="form-group">
+                        <label>Menu Dish ID:</label>
+                        <input type="number" class="menuDishId" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity:</label>
+                        <input type="number" class="quantity" value="2" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Notes:</label>
+                        <input type="text" class="itemNotes" value="Không cay">
+                    </div>
+                    <button type="button" class="remove-item" onclick="removeItem(this)">Remove Item</button>
+                </div>
+                <div class="item-row">
+                    <div class="form-group">
+                        <label>Menu Dish ID:</label>
+                        <input type="number" class="menuDishId" value="2" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity:</label>
+                        <input type="number" class="quantity" value="1" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Notes:</label>
+                        <input type="text" class="itemNotes" value="Thêm đá">
+                    </div>
+                    <button type="button" class="remove-item" onclick="removeItem(this)">Remove Item</button>
+                </div>
+            `;
+        }
+
+        // Load sample data on page load
+        window.onload = function() {
+            loadSampleData();
+        };
+    </script>
+</body>
+</html>

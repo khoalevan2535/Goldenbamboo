@@ -1,0 +1,224 @@
+/* Staff Sidebar Styles */
+
+.staff-sidebar-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+}
+
+/* Profile Section */
+.sidebar-profile {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    color: white;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.profile-avatar {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.profile-info h6 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.profile-info small {
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+}
+
+.profile-info .badge {
+    font-size: 10px;
+    padding: 2px 8px;
+}
+
+/* Navigation Sections */
+.nav-section {
+    margin-bottom: 24px;
+}
+
+.nav-section-title {
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    padding-left: 16px;
+    display: block;
+}
+
+/* Navigation Items */
+.nav-item {
+    display: flex !important;
+    align-items: center;
+    padding: 12px 16px !important;
+    margin-bottom: 4px;
+    border-radius: 12px;
+    text-decoration: none !important;
+    color: rgba(255,255,255,0.8) !important;
+    transition: all 0.3s ease;
+    border: none !important;
+    background: transparent !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1) !important;
+    color: white !important;
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.nav-item.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+    transform: translateX(4px);
+    font-weight: 600;
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #ff6b6b 0%, #ee5a24 100%);
+    border-radius: 0 2px 2px 0;
+}
+
+.nav-icon {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.nav-item span {
+    flex: 1;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.nav-item .badge {
+    font-size: 10px;
+    padding: 2px 6px;
+}
+
+/* Active state for badges */
+.nav-item.active .badge {
+    background: rgba(255,255,255,0.9) !important;
+    color: #667eea !important;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.logout-btn {
+    border: 2px solid #dc3545;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: #dc3545;
+}
+
+.logout-btn:hover {
+    background: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(220, 53, 69, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .staff-sidebar-content {
+        padding: 16px 12px;
+    }
+    
+    .sidebar-profile {
+        padding: 12px;
+        margin-bottom: 16px;
+    }
+    
+    .profile-avatar {
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+    }
+    
+    .nav-item {
+        padding: 10px 12px !important;
+        margin-bottom: 2px;
+    }
+    
+    .nav-item span {
+        font-size: 13px;
+    }
+    
+    .nav-section {
+        margin-bottom: 16px;
+    }
+}
+
+/* Animation for notification badges */
+.nav-item .badge.bg-warning {
+    animation: pulse-warning 2s infinite;
+}
+
+.nav-item .badge.bg-primary {
+    animation: pulse-primary 2s infinite;
+}
+
+@keyframes pulse-warning {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes pulse-primary {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Smooth transitions */
+.nav-item, .nav-item .badge, .logout-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus states for accessibility */
+.nav-item:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+.logout-btn:focus {
+    outline: 2px solid #dc3545;
+    outline-offset: 2px;
+}
+
+

@@ -1,0 +1,154 @@
+// AddToCartButtonClient Styles
+
+.add-to-cart-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #28a745;
+    background: #28a745;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-width: 120px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &:hover:not(:disabled) {
+        background: #218838;
+        border-color: #218838;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background: #6c757d;
+        border-color: #6c757d;
+        transform: none;
+        box-shadow: none;
+    }
+
+    // Trạng thái disabled không phải unavailable
+    &:disabled:not(.unavailable) {
+        background: #ffc107;
+        border-color: #ffc107;
+        color: #212529;
+    }
+
+    // Trạng thái loading
+    &:disabled:not(.unavailable) {
+        background: #ffc107;
+        border-color: #ffc107;
+        color: #212529;
+        transform: none;
+        box-shadow: none;
+    }
+
+    // Trạng thái loading với class loading
+    &.loading {
+        background: #ffc107;
+        border-color: #ffc107;
+        color: #212529;
+        cursor: wait;
+        transform: none;
+        box-shadow: none;
+    }
+
+    // Trạng thái loading với class loading và disabled
+    &.loading:disabled {
+        background: #ffc107;
+        border-color: #ffc107;
+        color: #212529;
+        cursor: wait;
+        transform: none;
+        box-shadow: none;
+    }
+
+    // Trạng thái loading với class loading và disabled không phải unavailable
+    &.loading:disabled:not(.unavailable) {
+        background: #ffc107;
+        border-color: #ffc107;
+        color: #212529;
+        cursor: wait;
+        transform: none;
+        box-shadow: none;
+    }
+
+    // Trạng thái loading với class loading và disabled không phải unavailable và không phải available
+    &.loading:disabled:not(.unavailable):not(.available) {
+        background: #ffc107;
+        border-color: #ffc107;
+        color: #212529;
+        cursor: wait;
+        transform: none;
+        box-shadow: none;
+    }
+
+    // Trạng thái unavailable
+    &.unavailable {
+        background: #dc3545;
+        border-color: #dc3545;
+        cursor: not-allowed;
+        opacity: 0.6;
+
+        &:hover {
+            background: #dc3545;
+            border-color: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+    }
+
+    // Trạng thái available
+    &.available {
+        background: #28a745;
+        border-color: #28a745;
+        transform: none;
+        box-shadow: none;
+    }
+
+    // Trạng thái mặc định
+    &:not(.available):not(.unavailable) {
+        background: #28a745;
+        border-color: #28a745;
+    }
+
+    // Trạng thái disabled
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background: #6c757d;
+        border-color: #6c757d;
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .add-to-cart-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .add-to-cart-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        min-width: 90px;
+    }
+}

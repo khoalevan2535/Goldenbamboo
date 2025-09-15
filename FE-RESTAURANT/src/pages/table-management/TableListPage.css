@@ -1,0 +1,250 @@
+/* Table Management Styles */
+
+.table-list-container {
+  padding: 20px;
+}
+
+.table-card {
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.table-card.inactive {
+  opacity: 0.6;
+  background-color: #f8f9fa;
+}
+
+.table-card.inactive .card-title {
+  color: #6c757d;
+}
+
+.status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.branch-display {
+  padding: 8px 12px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  color: #495057;
+}
+
+.view-mode-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.view-mode-buttons .btn {
+  padding: 6px 12px;
+}
+
+/* Filter Section */
+.filter-section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table-list-container {
+    padding: 10px;
+  }
+  
+  .action-buttons {
+    justify-content: center;
+  }
+  
+  .action-buttons .btn {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  
+  .view-mode-buttons {
+    justify-content: center;
+  }
+}
+
+/* Loading and Empty States */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6c757d;
+}
+
+/* Pagination Info */
+.pagination-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* Table Form Styles */
+.table-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.table-form-container .form-control,
+.table-form-container .form-select {
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+}
+
+.table-form-container .form-control:focus,
+.table-form-container .form-select:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Table View Styles */
+.table-view-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.table-view-container .card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table-view-container .card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  font-weight: 600;
+}
+
+/* Table History Styles */
+.table-history-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.table-history-container .table {
+  font-size: 14px;
+}
+
+.table-history-container .badge {
+  font-size: 11px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Breadcrumb Styles */
+.breadcrumb {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb-item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: #6c757d;
+}
+
+/* Tooltip Styles */
+.tooltip {
+  font-size: 12px;
+}
+
+/* Badge Styles */
+.badge {
+  font-size: 11px;
+  padding: 4px 8px;
+}
+
+.badge.bg-warning {
+  color: #212529;
+}
+
+/* Button Group Styles */
+.btn-group-sm > .btn {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+/* Form Validation Styles */
+.form-control.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.invalid-feedback {
+  display: block;
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Animation Styles */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .action-buttons,
+  .view-mode-buttons,
+  .btn {
+    display: none !important;
+  }
+  
+  .table-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}

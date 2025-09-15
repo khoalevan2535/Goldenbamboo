@@ -1,0 +1,605 @@
+// Cart Client Components Styles - Updated for modern design
+
+// Import variables from main Cart.scss
+$primary-warm: #e07b39;
+$primary-dark: #d2691e;
+$secondary-warm: #ff8c42;
+$accent-blue: #4a90e2;
+$accent-green: #27ae60;
+$accent-red: #e74c3c;
+$gray-light: #f8f9fa;
+$gray-medium: #6c757d;
+$gray-dark: #343a40;
+$white: #ffffff;
+$border-light: #e9ecef;
+$shadow-light: rgba(0, 0, 0, 0.08);
+$shadow-medium: rgba(0, 0, 0, 0.12);
+
+// Cart branch tabs - Modern design
+.cart-branch-tabs {
+  margin-bottom: 2rem;
+  background: $white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px $shadow-light;
+  border: 1px solid $border-light;
+  overflow: hidden;
+
+  .branch-tabs-header {
+    background: linear-gradient(135deg, $accent-blue, #5dade2);
+    color: $white;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    margin: 0;
+
+    h3 {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+  }
+
+  .branch-tabs-container {
+    padding: 1.5rem 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .branch-tab {
+      background: $gray-light;
+      border: 2px solid $border-light;
+      border-radius: 15px;
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      min-width: 140px;
+      text-align: center;
+
+      &:hover {
+        border-color: $primary-warm;
+        background: rgba($primary-warm, 0.05);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px $shadow-light;
+      }
+
+      &.active {
+        border-color: $primary-warm;
+        background: linear-gradient(135deg, rgba($primary-warm, 0.1), rgba($secondary-warm, 0.1));
+        box-shadow: 0 8px 25px rgba($primary-warm, 0.2);
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 100%;
+          background: linear-gradient(135deg, $primary-warm, $secondary-warm);
+        }
+      }
+
+      .branch-tab-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .branch-name {
+          font-weight: 600;
+          color: $gray-dark;
+          font-size: 0.9rem;
+        }
+
+        .branch-count {
+          font-size: 0.75rem;
+          color: $gray-medium;
+        }
+      }
+
+      .selected-indicator {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: $accent-red;
+        color: $white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba($accent-red, 0.3);
+      }
+    }
+  }
+
+  .current-branch-info {
+    margin: 0 2rem 1.5rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, rgba($accent-blue, 0.1), rgba($accent-blue, 0.05));
+    border-radius: 15px;
+    border-left: 4px solid $accent-blue;
+
+    p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: $accent-blue;
+      font-weight: 500;
+    }
+  }
+}
+
+// Cart item row - Modern design
+.cart-item-row {
+  display: grid;
+  grid-template-columns: 60px 100px 2fr 120px 150px 120px 100px;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid $border-light;
+
+  &:hover {
+    background: rgba($primary-warm, 0.02);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 50px 80px 2fr 100px 120px 100px 80px;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid $border-light;
+    border-radius: 15px;
+    margin: 1rem;
+    background: $white;
+    box-shadow: 0 5px 15px $shadow-light;
+  }
+
+  .checkbox-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: $primary-warm;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  }
+
+  .item-image {
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px $shadow-light;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 30px $shadow-medium;
+      }
+
+      @media (max-width: 768px) {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .item-info {
+    .item-name {
+      font-weight: 700;
+      color: $gray-dark;
+      margin-bottom: 0.5rem;
+      display: block;
+      font-size: 1.2rem;
+      line-height: 1.3;
+    }
+
+    .item-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .item-type {
+        font-size: 0.9rem;
+        color: $gray-medium;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: $gray-light;
+        padding: 0.3rem 0.6rem;
+        border-radius: 8px;
+        display: inline-block;
+        width: fit-content;
+      }
+
+      .item-branch {
+        color: $accent-blue;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .discount-badge {
+        background: linear-gradient(135deg, $accent-red, #c0392b);
+        color: $white;
+        padding: 0.3rem 0.6rem;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: inline-block;
+        width: fit-content;
+        box-shadow: 0 2px 8px rgba($accent-red, 0.3);
+      }
+    }
+  }
+
+  .price-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    .original-price {
+      text-decoration: line-through;
+      color: $gray-medium;
+      font-size: 0.9rem;
+    }
+
+    .final-price {
+      color: $accent-red;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .price {
+      color: $primary-warm;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+
+  .quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+
+    .qty-btn {
+      background: $primary-warm;
+      color: $white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover:not(:disabled) {
+        background: $primary-dark;
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba($primary-warm, 0.4);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    .qty-input {
+      width: 60px;
+      text-align: center;
+      border: 2px solid $border-light;
+      border-radius: 10px;
+      padding: 0.5rem;
+      font-weight: 600;
+      color: $gray-dark;
+      background: $white;
+      font-size: 1rem;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-warm;
+        box-shadow: 0 0 0 3px rgba($primary-warm, 0.1);
+      }
+    }
+  }
+
+  .item-total {
+    text-align: center;
+    font-weight: 700;
+    color: $accent-green;
+    font-size: 1.3rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .action-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .remove-btn {
+      background: linear-gradient(135deg, $accent-red, #c0392b);
+      color: $white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba($accent-red, 0.3);
+
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba($accent-red, 0.4);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      .remove-icon {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// Cart summary client - Modern design
+.cart-summary-client {
+  background: $white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px $shadow-light;
+  border: 1px solid $border-light;
+  padding: 2rem;
+
+  .summary-content {
+    .summary-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid $border-light;
+
+      h3 {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $gray-dark;
+      }
+
+      .branch-info {
+        margin-top: 1rem;
+
+        .branch-name {
+          color: $accent-blue;
+          font-weight: 600;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .summary-actions {
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .select-all-btn {
+        padding: 1rem 1.5rem;
+        border: 2px solid $accent-blue;
+        background: $white;
+        color: $accent-blue;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        &:hover,
+        &.active {
+          background: $accent-blue;
+          color: $white;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba($accent-blue, 0.3);
+        }
+      }
+
+      .remove-selected-btn {
+        padding: 1rem 1.5rem;
+        border: 2px solid $accent-red;
+        background: $white;
+        color: $accent-red;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        &:hover {
+          background: $accent-red;
+          color: $white;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba($accent-red, 0.3);
+        }
+      }
+    }
+
+    .summary-info {
+      margin-bottom: 2rem;
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid $border-light;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &.total {
+          font-weight: 700;
+          font-size: 1.2rem;
+          color: $gray-dark;
+          border-top: 2px solid $border-light;
+          padding-top: 1.5rem;
+          margin-top: 1rem;
+
+          .total-amount {
+            color: $primary-warm;
+            font-size: 1.4rem;
+          }
+        }
+
+        &.discount {
+          color: $accent-red;
+          font-weight: 600;
+        }
+
+        &.all-branches-total {
+          background: linear-gradient(135deg, rgba($accent-green, 0.1), rgba($accent-green, 0.05));
+          padding: 1rem 1.5rem;
+          border-radius: 15px;
+          margin-top: 1rem;
+          border: 1px solid rgba($accent-green, 0.2);
+
+          .all-total-amount {
+            color: $accent-green;
+            font-weight: 700;
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+
+    .summary-actions-main {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .continue-shopping-btn {
+        padding: 1rem 1.5rem;
+        border: 2px solid $gray-medium;
+        background: $white;
+        color: $gray-medium;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        &:hover {
+          background: $gray-medium;
+          color: $white;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba($gray-medium, 0.3);
+        }
+      }
+
+      .checkout-btn {
+        padding: 1rem 1.5rem;
+        border: none;
+        background: linear-gradient(135deg, $accent-green, #2ecc71);
+        color: $white;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 8px 25px rgba($accent-green, 0.3);
+
+        &:hover:not(:disabled) {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 35px rgba($accent-green, 0.4);
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+          transform: none !important;
+        }
+      }
+    }
+
+    .no-items-selected {
+      text-align: center;
+      padding: 2rem;
+      color: $gray-medium;
+      font-style: italic;
+      background: $gray-light;
+      border-radius: 15px;
+      border: 1px dashed $border-light;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .cart-branch-tabs {
+    .branch-tabs-container {
+      flex-direction: column;
+
+      .branch-tab {
+        min-width: auto;
+      }
+    }
+  }
+
+  .cart-summary-client {
+    padding: 1.5rem;
+  }
+}

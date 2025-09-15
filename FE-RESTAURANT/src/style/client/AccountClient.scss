@@ -1,0 +1,133 @@
+$primary-warm: #e07b39; // Warm orange
+$hover-warm: #6d3710; // Darker brown for hover
+$secondary-warm: #f4a261; // Soft peach
+$primary-green: #667b68; // Green for reservation banner
+$background-cream: #f8f5f0; // Creamy background
+$gray: #5a5a5a; // Gray for secondary text
+$gray-dark: #374151; // Darker gray for text
+$white: #ffffff; // White
+
+.account {
+  width: 100%;
+  background-color: $background-cream;
+  padding: 2rem 1rem;
+  min-height: calc(100vh - 120px); // Adjust for header/footer
+
+  @media (min-width: 768px) {
+    padding: 3rem 2rem;
+  }
+
+  .account-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+      color: $primary-warm;
+      margin-bottom: 2rem;
+
+      @media (min-width: 768px) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  .profile-edit,
+  .password-change {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.5rem;
+      color: $primary-warm;
+      margin-bottom: 1rem;
+
+      @media (min-width: 768px) {
+        font-size: 1.75rem;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+
+        label {
+          font-size: 0.875rem;
+          color: $gray-dark;
+          margin-bottom: 0.5rem;
+        }
+
+        .password-input-wrapper {
+          position: relative;
+
+          input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 1px solid $gray;
+            border-radius: 0.25rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+
+            &:focus {
+              border-color: $primary-warm;
+            }
+          }
+
+          .password-toggle {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: $gray;
+            font-size: 1.25rem;
+
+            &:hover {
+              color: $primary-warm;
+            }
+          }
+        }
+
+        input:not([type="password"]) {
+          width: 100%;
+          padding: 0.75rem;
+          font-size: 1rem;
+          border: 1px solid $gray;
+          border-radius: 0.25rem;
+          outline: none;
+          transition: border-color 0.3s ease;
+
+          &:focus {
+            border-color: $primary-warm;
+          }
+        }
+      }
+
+      .submit-button {
+        padding: 0.75rem 1.5rem;
+        background-color: $primary-warm;
+        color: $white;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: $hover-warm;
+        }
+      }
+    }
+  }
+}

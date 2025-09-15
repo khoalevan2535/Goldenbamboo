@@ -1,0 +1,331 @@
+/* Staff Modern CSS - Tối ưu hóa hiệu năng và giao diện */
+
+/* Reset và Base */
+.staff-order-page {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+/* Card Styles */
+.menu-item-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.menu-item-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-color: #007bff;
+}
+
+.menu-item-card .card-body {
+    padding: 1.25rem;
+}
+
+.menu-item-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: white;
+}
+
+/* Cart Sidebar */
+.cart-sidebar {
+    position: sticky;
+    top: 20px;
+    height: calc(100vh - 40px);
+    overflow-y: auto;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.cart-sidebar .card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1rem 1.25rem;
+}
+
+.cart-item {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.cart-item:hover {
+    border-color: #007bff;
+    background-color: #f8f9fa;
+}
+
+.cart-item .list-group-item {
+    border: none;
+    padding: 1rem;
+}
+
+/* Table Cards */
+.table-card {
+    transition: all 0.3s ease;
+    border: 2px solid #e9ecef;
+    cursor: pointer;
+}
+
+.table-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.table-card.border-primary {
+    border-color: #007bff !important;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+}
+
+/* Menu List View */
+.menu-list .menu-item-card {
+    margin-bottom: 1rem;
+}
+
+.menu-list .menu-item-card .card-body {
+    padding: 1.5rem;
+}
+
+/* Search and Filter */
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* Navigation Pills */
+.nav-pills .nav-link {
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+}
+
+.nav-pills .nav-link:hover:not(.active) {
+    background-color: #f8f9fa;
+    color: #495057;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-outline-primary {
+    border: 2px solid #667eea;
+    color: #667eea;
+}
+
+.btn-outline-primary:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    transform: translateY(-1px);
+}
+
+/* Badges */
+.badge {
+    border-radius: 12px;
+    padding: 0.5em 0.75em;
+    font-weight: 500;
+}
+
+/* Loading States */
+.spinner-border {
+    color: #667eea;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .staff-order-page {
+        padding: 10px;
+    }
+    
+    .cart-sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1050;
+        border-radius: 0;
+    }
+    
+    .menu-item-card {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .menu-item-card .card-body {
+        padding: 1rem;
+    }
+    
+    .cart-item .list-group-item {
+        padding: 0.75rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-item-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Performance Optimizations */
+.menu-item-card,
+.cart-item,
+.table-card {
+    will-change: transform;
+}
+
+/* Custom Scrollbar */
+.cart-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cart-sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.cart-sidebar::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.cart-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Focus States for Accessibility */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+    outline: none;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .menu-item-card {
+        border: 2px solid #000;
+    }
+    
+    .btn {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .menu-item-card,
+    .cart-item,
+    .table-card,
+    .btn {
+        transition: none;
+    }
+    
+    .menu-item-card:hover,
+    .table-card:hover {
+        transform: none;
+    }
+}
+
+/* Dashboard Styles */
+.staff-dashboard {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.stat-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recent-orders .order-item {
+    transition: all 0.2s ease;
+}
+
+.recent-orders .order-item:hover {
+    background-color: #f8f9fa;
+}
+
+.quick-stats .stat-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.quick-stats .stat-item:last-child {
+    border-bottom: none;
+}
+
+/* Print Styles */
+@media print {
+    .staff-order-page,
+    .staff-dashboard {
+        background: white;
+    }
+    
+    .cart-sidebar {
+        display: none;
+    }
+}

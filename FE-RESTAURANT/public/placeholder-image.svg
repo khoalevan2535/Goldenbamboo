@@ -1,0 +1,17 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <g transform="translate(100, 100)">
+    <circle cx="0" cy="0" r="30" fill="#dee2e6"/>
+    <path d="M-15,-15 L15,-15 L15,15 L-15,15 Z" fill="#adb5bd"/>
+    <circle cx="-8" cy="-8" r="3" fill="#6c757d"/>
+    <circle cx="8" cy="-8" r="3" fill="#6c757d"/>
+    <path d="M-10,5 Q0,-5 10,5" stroke="#6c757d" stroke-width="2" fill="none"/>
+  </g>
+  <text x="100" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#6c757d">Không có ảnh</text>
+</svg>
+
+
+
+
+
+

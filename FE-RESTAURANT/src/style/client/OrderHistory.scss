@@ -1,0 +1,457 @@
+/* ============================
+   OrderHistory.scss — Warm Modern Theme
+   Scope chính: .order-history (khuyên dùng)
+   Nếu bạn chưa thêm className, phần Fallback ở cuối sẽ cover các selector Bootstrap.
+   ============================ */
+
+/* --------- Palette (Warm) --------- */
+$warm-primary: #d97706; // amber 600
+$warm-primary-700: #b45309;
+$warm-accent: #ea580c; // orange 600
+$warm-rose: #f97316; // orange 500
+$warm-bg-50: #fff7ed; // peach wash
+$warm-bg-100: #fef3c7; // amber 100
+$warm-line: #fde0c2; // soft border
+$ink-700: #3f3f46;
+$ink-500: #6b7280;
+$white: #ffffff;
+
+/* --------- Elevation & Motion --------- */
+$radius-xl: 1rem; // 16px
+$radius-2xl: 1.25rem; // 20px
+$shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 8px 24px rgba(0, 0, 0, 0.10);
+$shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.14);
+
+@keyframes subtle-rise {
+  from {
+    transform: translateY(2px);
+    opacity: .98;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes soft-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba($warm-primary, .28);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba($warm-primary, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba($warm-primary, 0);
+  }
+}
+
+/* =========================================================
+   S C O P E D   S T Y L E S
+   ========================================================= */
+.order-history {
+  /* Page backdrop */
+  background: linear-gradient(135deg, $warm-bg-50 0%, $warm-bg-100 100%);
+  padding-bottom: 2rem;
+
+  /* Typography tweaks */
+  h4,
+  h5,
+  h6 {
+    color: $ink-700;
+    letter-spacing: .2px;
+  }
+
+  /* Header card */
+  .card:first-of-type {
+    border: 1px solid $warm-line;
+    border-radius: $radius-2xl;
+    background: linear-gradient(180deg, rgba($white, .9) 0%, $white 100%);
+    box-shadow: $shadow-sm;
+    animation: subtle-rise .35s ease;
+
+    .card-body {
+      padding: 1.25rem 1.25rem;
+
+      h4 {
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+
+        &::before {
+          content: "";
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: $warm-accent;
+          box-shadow: 0 0 0 6px rgba($warm-accent, .15);
+        }
+      }
+
+      small {
+        color: $ink-500;
+      }
+    }
+  }
+
+  /* Main card */
+  .card:not(:first-of-type) {
+    border: 1px solid $warm-line;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-sm;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+      border-color: rgba($warm-primary, .35);
+    }
+  }
+
+  /* Buttons (Bootstrap variants tuned warmer) */
+  .btn-outline-info {
+    --bs-btn-color: #0ea5e9;
+    --bs-btn-border-color: #93c5fd;
+    --bs-btn-hover-bg: #bfdbfe;
+    --bs-btn-hover-border-color: #93c5fd;
+    border-radius: .7rem;
+    padding: .45rem .7rem;
+    box-shadow: none;
+  }
+
+  .btn-outline-danger {
+    --bs-btn-color: #e11d48;
+    /* warm red */
+    --bs-btn-border-color: #fecdd3;
+    --bs-btn-hover-bg: #ffe4e6;
+    --bs-btn-hover-border-color: #fecdd3;
+    border-radius: .7rem;
+    padding: .45rem .7rem;
+    box-shadow: none;
+  }
+
+  /* Primary accent for numbers */
+  .text-primary {
+    color: $warm-primary !important;
+  }
+
+  /* Spinner tone */
+  .spinner-border {
+    color: $warm-primary;
+  }
+
+  /* Empty state */
+  .text-center {
+    .text-muted {
+      color: $ink-500 !important;
+    }
+
+    svg {
+      opacity: .55;
+    }
+  }
+
+  /* Table styling */
+  .table {
+    --row-hover: rgba($warm-primary, .06);
+    --stripe: rgba($warm-primary, .04);
+
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 0;
+
+    thead {
+      th {
+        background: linear-gradient(180deg, rgba($warm-bg-100, .75) 0%, rgba($warm-bg-100, 1) 100%);
+        color: $ink-700;
+        font-weight: 700;
+        border-bottom: 2px solid $warm-line;
+        padding: .9rem .9rem;
+
+        &:first-child {
+          border-top-left-radius: .75rem;
+        }
+
+        &:last-child {
+          border-top-right-radius: .75rem;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        transition: background-color .18s ease;
+
+        &:nth-child(2n) {
+          background: var(--stripe);
+        }
+
+        &:hover {
+          background: var(--row-hover);
+        }
+      }
+
+      td {
+        vertical-align: middle;
+        padding: .85rem .9rem;
+        border-color: rgba($warm-line, .7);
+      }
+    }
+  }
+
+  /* Badge remap: warmer feel, subtle glow */
+  .badge {
+    border-radius: 999px;
+    font-weight: 600;
+    padding: .45rem .6rem;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .05);
+
+    &.bg-warning {
+      background-color: #fde68a !important;
+      color: #7c2d12;
+    }
+
+    /* PENDING */
+    &.bg-info {
+      background-color: #fbcfe8 !important;
+      color: #831843;
+    }
+
+    /* CONFIRMED / DELIVERING -> warm magenta */
+    &.bg-primary {
+      background-color: lighten($warm-primary, 7%) !important;
+      color: #27150a;
+    }
+
+    /* PREPARING */
+    &.bg-success {
+      background-color: #bbf7d0 !important;
+      color: #064e3b;
+    }
+
+    /* READY/COMPLETED */
+    &.bg-danger {
+      background-color: #fecaca !important;
+      color: #7f1d1d;
+    }
+
+    /* CANCELLED */
+    &.bg-secondary {
+      background-color: #e5e7eb !important;
+      color: #374151;
+    }
+  }
+
+  /* Modal: warm header ribbon */
+  .modal-content {
+    border: 1px solid $warm-line;
+    border-radius: $radius-2xl;
+    box-shadow: $shadow-lg;
+    overflow: hidden;
+
+    .modal-header {
+      background: linear-gradient(135deg, rgba($warm-primary, .12) 0%, rgba($warm-accent, .10) 100%);
+      border-bottom: 1px solid $warm-line;
+
+      .modal-title {
+        font-weight: 800;
+        color: $ink-700;
+      }
+
+      .btn-close {
+        filter: hue-rotate(-10deg) saturate(1.2);
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .modal-body {
+      background: $white;
+
+      .table {
+        thead th {
+          background: rgba($warm-bg-100, .7);
+        }
+
+        tbody td {
+          border-color: rgba($warm-line, .7);
+        }
+      }
+
+      h6 {
+        font-weight: 700;
+        color: $ink-700;
+      }
+
+      p {
+        color: $ink-500;
+      }
+
+      small.text-muted {
+        color: $ink-500 !important;
+      }
+    }
+  }
+
+  /* Chips / code-like highlights */
+  strong {
+    color: $ink-700;
+  }
+
+  /* Action group spacing */
+  .btn-group.btn-group-sm {
+    gap: .4rem;
+
+    .btn {
+      border-width: 1px;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  /* Order items summary styling - giống Order Summary */
+  .order-items-summary {
+    .order-item-summary {
+      padding: 0.75rem 0;
+
+      .item-image {
+        img {
+          border-radius: 0.5rem;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.2s ease;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+
+      h6 {
+        color: $ink-700;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .quantity-section {
+        .badge {
+          background-color: rgba($warm-bg-100, 0.8) !important;
+          color: $ink-700 !important;
+          border: 1px solid $warm-line;
+          font-weight: 600;
+          font-size: 0.85rem;
+        }
+      }
+
+      .price-section {
+        .unit-price {
+          color: $warm-accent !important;
+          font-size: 0.9rem;
+        }
+
+        .total-price {
+          color: $warm-primary !important;
+          font-size: 1.1rem;
+        }
+      }
+
+      small.text-muted {
+        color: $ink-500 !important;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      hr {
+        margin: 0.75rem 0;
+        border-top: 1px solid rgba($warm-line, 0.6);
+      }
+    }
+  }
+
+  /* Little accent for order code */
+  td>strong {
+    background: linear-gradient(180deg, rgba($warm-primary, .08), rgba($warm-accent, .08));
+    padding: .25rem .5rem;
+    border-radius: .5rem;
+    border: 1px dashed rgba($warm-primary, .25);
+  }
+
+  /* Loading state block */
+  .py-4 {
+    .spinner-border {
+      animation: soft-pulse 2s ease-out infinite;
+    }
+
+    p {
+      color: $ink-500;
+    }
+  }
+}
+
+/* =========================================================
+   F A L L B A C K  (nếu chưa thêm className="order-history")
+   ========================================================= */
+.container>.row>.col>.card,
+/* header card heuristic */
+.card {
+  &:first-of-type {
+    border: 1px solid $warm-line;
+    border-radius: $radius-2xl;
+    background: linear-gradient(180deg, rgba($white, .9) 0%, $white 100%);
+    box-shadow: $shadow-sm;
+  }
+}
+
+.table thead th {
+  background: linear-gradient(180deg, rgba($warm-bg-100, .75) 0%, rgba($warm-bg-100, 1) 100%);
+  color: $ink-700;
+  font-weight: 700;
+  border-bottom: 2px solid $warm-line;
+}
+
+.table tbody tr:nth-child(2n) {
+  background: rgba($warm-primary, .04);
+}
+
+.table tbody tr:hover {
+  background: rgba($warm-primary, .06);
+}
+
+.badge.bg-warning {
+  background-color: #fde68a !important;
+  color: #7c2d12;
+}
+
+.badge.bg-info {
+  background-color: #fbcfe8 !important;
+  color: #831843;
+}
+
+.badge.bg-primary {
+  background-color: lighten($warm-primary, 7%) !important;
+  color: #27150a;
+}
+
+.badge.bg-success {
+  background-color: #bbf7d0 !important;
+  color: #064e3b;
+}
+
+.badge.bg-danger {
+  background-color: #fecaca !important;
+  color: #7f1d1d;
+}

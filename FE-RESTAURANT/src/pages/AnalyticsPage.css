@@ -1,0 +1,353 @@
+/* Analytics Page Styles */
+.analytics-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.analytics-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.analytics-header h2 {
+  color: white;
+  font-weight: 700;
+}
+
+.analytics-header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+}
+
+/* Metric Cards */
+.metric-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.metric-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.metric-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background: rgba(0, 123, 255, 0.1);
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem 0;
+  color: #2c3e50;
+}
+
+.metric-label {
+  color: #6c757d;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* Quick Stat Cards */
+.quick-stat-card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.quick-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.quick-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 123, 255, 0.1);
+}
+
+/* Chart Containers */
+.chart-container {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-placeholder {
+  text-align: center;
+  color: #6c757d;
+  padding: 2rem;
+}
+
+.chart-placeholder p {
+  margin-bottom: 0.5rem;
+}
+
+/* Stats Summary */
+.stats-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.stats-item {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.stats-item strong {
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+/* Table Enhancements */
+.table th {
+  background: #f8f9fa;
+  border-top: none;
+  font-weight: 600;
+  color: #495057;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.dish-icon, .branch-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+}
+
+/* Progress Bars */
+.progress {
+  height: 8px;
+  border-radius: 4px;
+}
+
+.progress-bar {
+  border-radius: 4px;
+}
+
+/* Navigation Tabs */
+.nav-tabs .nav-link {
+  border: none;
+  border-radius: 8px 8px 0 0;
+  color: #6c757d;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+  background: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+}
+
+.nav-tabs .nav-link.active {
+  background: #007bff;
+  color: white;
+  border: none;
+}
+
+/* Badge Enhancements */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .analytics-header {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .analytics-header .d-flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .metric-value {
+    font-size: 1.5rem;
+  }
+  
+  .metric-icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .quick-stat-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .chart-container {
+    min-height: 200px;
+  }
+  
+  .table-responsive {
+    font-size: 0.9rem;
+  }
+  
+  .stats-item {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .analytics-header {
+    padding: 1rem;
+  }
+  
+  .analytics-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .metric-card {
+    margin-bottom: 1rem;
+  }
+  
+  .nav-tabs .nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Animation Effects */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.metric-card,
+.quick-stat-card,
+.card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Loading States */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  z-index: 10;
+}
+
+/* Error States */
+.error-card {
+  border-color: #dc3545;
+  background: rgba(220, 53, 69, 0.05);
+}
+
+.error-card .card-body {
+  color: #721c24;
+}
+
+/* Success States */
+.success-indicator {
+  color: #28a745;
+  font-weight: 600;
+}
+
+/* Warning States */
+.warning-indicator {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+/* Info States */
+.info-indicator {
+  color: #17a2b8;
+  font-weight: 600;
+}
+
+/* Custom Scrollbar */
+.chart-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chart-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.chart-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.chart-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Print Styles */
+@media print {
+  .analytics-header,
+  .nav-tabs,
+  .btn {
+    display: none !important;
+  }
+  
+  .card {
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+  }
+  
+  .metric-card,
+  .quick-stat-card {
+    break-inside: avoid;
+  }
+}
+
+
+
+
+
+

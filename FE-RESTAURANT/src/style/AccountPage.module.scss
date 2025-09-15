@@ -1,0 +1,260 @@
+// AccountPage.module.scss
+
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.avatar-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.avatar-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.avatar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+
+  i {
+    font-size: 2rem;
+    color: white;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.stat-item {
+  padding: 1rem 0.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.form-control-lg {
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    border-color: #667eea;
+  }
+}
+
+.btn-modern {
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.btn-primary-modern {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+
+  &:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    color: white;
+  }
+}
+
+.btn-outline-modern {
+  border: 2px solid #667eea;
+  color: #667eea;
+  background: transparent;
+
+  &:hover {
+    background: #667eea;
+    color: white;
+  }
+}
+
+.card-modern {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.badge-modern {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.location-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.location-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.location-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.location-details {
+  flex: 1;
+}
+
+.location-address {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.location-coords {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.accuracy-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.accuracy-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #28a745;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px #28a745;
+}
+
+.accuracy-ring {
+  border: 2px solid rgba(40, 167, 69, 0.3);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #dee2e6, transparent);
+  margin: 2rem 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .avatar-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .stat-item {
+    padding: 0.75rem 0.25rem;
+  }
+
+  .stat-number {
+    font-size: 1.25rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+}
+
+// Fix Leaflet icon issues
+:global(.leaflet-default-icon-path) {
+  background-image: url('https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png');
+}
+
+:global(.leaflet-default-shadow-path) {
+  background-image: url('https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png');
+}
+
+// Account Page Wrapper for AdminLayout
+.account-page-wrapper {
+  min-height: 100vh;
+  background: transparent;
+  
+  .container-fluid {
+    padding: 0;
+  }
+}

@@ -1,0 +1,344 @@
+/* Dashboard specific styles - Full screen vertical layout */
+
+.staff-dashboard-page {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(248,249,250,0.1) 100%);
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Page Header */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.page-title {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.page-subtitle {
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.refresh-btn {
+    border: 2px solid #667eea;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    background: rgba(102, 126, 234, 0.05);
+    color: #667eea;
+    transition: all 0.3s ease;
+}
+
+.refresh-btn:hover:not(:disabled) {
+    background: #667eea;
+    border-color: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.refresh-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Dashboard card hover effects - Full width vertical layout */
+.dashboard-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15) !important;
+    border-color: rgba(102, 126, 234, 0.2);
+}
+
+.dashboard-card:hover::before {
+    opacity: 1;
+}
+
+/* Stats number animation */
+.stats-number {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Status badge improvements */
+.status-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Quick action improvements */
+.quick-action-card {
+    border-left: 4px solid var(--bs-primary);
+}
+
+.quick-action-card.warning {
+    border-left-color: var(--bs-warning);
+}
+
+.quick-action-card.success {
+    border-left-color: var(--bs-success);
+}
+
+.quick-action-card.info {
+    border-left-color: var(--bs-info);
+}
+
+/* Responsive dashboard improvements - Full screen vertical */
+@media (max-width: 1200px) {
+    .container-fluid {
+        padding: 15px;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .dashboard-stats-row {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .container-fluid {
+        padding: 12px;
+    }
+    
+    .page-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .dashboard-stats-row {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 10px;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .refresh-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .dashboard-card .card-body {
+        padding: 15px;
+    }
+    
+    .stats-number {
+        font-size: 1.5rem;
+    }
+    
+    .dashboard-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-fluid {
+        padding: 8px;
+    }
+    
+    .page-title {
+        font-size: 1.3rem;
+    }
+    
+    .page-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .refresh-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .dashboard-card .card-body {
+        padding: 12px;
+    }
+    
+    .stats-number {
+        font-size: 1.3rem;
+    }
+    
+    .dashboard-card:hover {
+        transform: translateY(-4px);
+    }
+    
+    .dashboard-stats-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+/* Full screen container */
+.container-fluid {
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    padding: 20px;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Ensure cards don't overflow */
+.card {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Override Bootstrap defaults */
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.col,
+[class*="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Ensure no unwanted margins */
+* {
+    box-sizing: border-box;
+}
+
+/* Table responsive improvements */
+.table-responsive {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+/* Form responsive improvements */
+.form-control,
+.form-select {
+    max-width: 100%;
+}
+
+/* Button responsive improvements */
+.btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Full screen vertical layout */
+.dashboard-vertical-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.dashboard-stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.dashboard-content-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.dashboard-charts-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Prevent horizontal scroll on small screens */
+@media (max-width: 576px) {
+    .container-fluid {
+        padding: 10px;
+    }
+    
+    .dashboard-stats-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .dashboard-card {
+        margin-bottom: 15px;
+    }
+}

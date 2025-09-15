@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Order Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Order Test</h1>
+    
+    <div class="container">
+        <h2>Test Actions</h2>
+        <button onclick="testCreateOrder()">Test Create Order</button>
+        <button onclick="testGetOrders()">Test Get Orders</button>
+        <button onclick="testPayOrder()">Test Pay Order</button>
+    </div>
+
+    <div class="container">
+        <h2>Results</h2>
+        <div id="result" class="result">Click a button to test...</div>
+    </div>
+
+    <script>
+        let lastOrderId = null;
+
+        async function testCreateOrder() {
+            const orderData = {
+                tableId: 1,
+                customerPhone: "0123456789",
+                notes: "Test order from simple test",
+                paymentMethod: "CASH",
+                items: [
+                    {
+                        menuDishId: 1,
+                        quantity: 2,
+                        notes: "Không cay"
+                    },
+                    {
+                        menuDishId: 2,
+                        quantity: 1,
+                        notes: "Thêm đá"
+                    }
+                ]
+            };
+            
+            try {
+                showResult('Creating order...', 'info');
+                
+                const response = await fetch('/api/staff/orders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderData)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    lastOrderId = result.id;
+                    showResult('✅ Order created successfully!\n\nOrder ID: ' + result.id + '\n\n' + JSON.stringify(result, null, 2), 'success');
+                } else {
+                    const errorText = await response.text();
+                    showResult('❌ Failed to create order:\n' + errorText, 'error');
+                }
+            } catch (error) {
+                showResult('❌ Error: ' + error.message, 'error');
+            }
+        }
+
+        async function testGetOrders() {
+            try {
+                showResult('Getting today\'s unpaid orders...', 'info');
+                
+                const response = await fetch('/api/staff/orders/today-unpaid', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    showResult('✅ Today\'s unpaid orders:\n\n' + JSON.stringify(result, null, 2), 'success');
+                } else {
+                    const errorText = await response.text();
+                    showResult('❌ Failed to get orders:\n' + errorText, 'error');
+                }
+            } catch (error) {
+                showResult('❌ Error: ' + error.message, 'error');
+            }
+        }
+
+        async function testPayOrder() {
+            if (!lastOrderId) {
+                showResult('❌ No order ID available. Please create an order first.', 'error');
+                return;
+            }
+
+            try {
+                showResult('Paying order ' + lastOrderId + '...', 'info');
+                
+                const response = await fetch('/api/staff/orders/' + lastOrderId + '/pay', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    showResult('✅ Order paid successfully!\n\n' + JSON.stringify(result, null, 2), 'success');
+                } else {
+                    const errorText = await response.text();
+                    showResult('❌ Failed to pay order:\n' + errorText, 'error');
+                }
+            } catch (error) {
+                showResult('❌ Error: ' + error.message, 'error');
+            }
+        }
+
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = message;
+            resultDiv.className = 'result ' + type;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,351 @@
+// Warm color palette (consistent with Home.scss and Footer.scss)
+$primary-warm: #e07b39; // Warm orange (matches --earthy-red)
+$background-cream: #f8f5f0; // Creamy background (matches --beige from Navbar example)
+$gray: #a66464; // Gray for secondary text (matches --gray)
+$hover-warm: #8B4513; // Darker brown for hover (matches #8B4513 from Navbar example)
+$white: #ffffff; // White
+
+// Navbar
+nav {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+  &.bg-background-cream {
+    background-color: $background-cream;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+  }
+
+  &.bg-transparent {
+    background-color: transparent;
+    padding: 1.5rem 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0.5rem; // Reduced padding for tighter alignment
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      padding: 0 1rem;
+    }
+
+    // Brand Text (aligned near left edge)
+    a.text-primary-warm {
+      color: $primary-warm;
+      font-family: "Playfair Display", serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      margin-left: -0.5rem; // Pull brand text closer to left edge
+
+      &:hover {
+        color: $hover-warm;
+      }
+
+      @media (min-width: 768px) {
+        font-size: 1.875rem;
+        margin-left: -0.75rem; // Slightly more pull on desktop
+      }
+    }
+
+    // Desktop Navigation (aligned near right edge)
+    .space-x-8 {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: flex;
+        gap: 1.5rem; // Reduced gap for tighter spacing
+        align-items: center;
+        margin-right: -0.5rem; // Pull navigation closer to right edge
+      }
+
+      a {
+        color: $gray;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &.text-primary-warm {
+          color: $primary-warm;
+          border-bottom: 2px solid $primary-warm;
+          padding-bottom: 0.25rem;
+        }
+
+        &:hover {
+          color: $primary-warm;
+        }
+
+        .fa-solid {
+          font-size: 0.875rem;
+          margin-right: 0.5rem;
+          vertical-align: middle;
+        }
+      }
+
+      .dropdown {
+        button {
+          color: $gray;
+          font-size: 0.875rem;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          font-weight: 500;
+          background: none;
+          border: none;
+          transition: color 0.3s ease;
+          display: flex;
+          align-items: center;
+
+          &:hover {
+            color: $primary-warm;
+          }
+
+          .fa-solid {
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+          }
+        }
+
+        .dropdown-menu {
+          background-color: $background-cream;
+          border: none;
+          border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          margin-top: 0.5rem;
+          min-width: 200px;
+          padding: 0.5rem 0;
+
+          .dropdown-item {
+            padding: 0.5rem 1rem;
+
+            .dropdown-link {
+              color: $gray;
+              font-size: 0.875rem;
+              text-transform: uppercase;
+              letter-spacing: 1.5px;
+              font-weight: 500;
+              text-decoration: none;
+              transition: color 0.3s ease;
+              display: block;
+              width: 100%;
+              text-align: left;
+              padding: 0.5rem 1rem;
+              border: none;
+              background: transparent;
+              cursor: pointer;
+
+              &:hover {
+                color: $primary-warm;
+                background-color: rgba($primary-warm, 0.1);
+              }
+            }
+
+            // Special styling for logout button
+            button.dropdown-link {
+              border: none;
+              background: transparent;
+              width: 100%;
+              text-align: left;
+              font-family: inherit;
+              font-size: inherit;
+              font-weight: inherit;
+              letter-spacing: inherit;
+              transition: all 0.3s ease;
+
+              &:hover {
+                color: $primary-warm;
+                background-color: rgba($primary-warm, 0.1);
+              }
+
+              &:focus {
+                outline: none;
+                box-shadow: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Mobile Navigation Toggle
+    .md\:hidden {
+      display: block;
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+
+      button {
+        background: none;
+        border: none;
+        color: $primary-warm;
+        padding: 0.5rem;
+
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  // Mobile Menu
+  .md\:hidden.absolute {
+    display: none;
+    background-color: $background-cream;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    animation: fadeIn 0.3s ease;
+
+    @media (max-width: 767px) {
+      display: block;
+    }
+
+    .container {
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      a {
+        color: $gray;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 0.5rem 0;
+        padding-left: 1rem;
+        transition: color 0.3s ease;
+
+        &.text-primary-warm {
+          color: $primary-warm;
+          border-left: 4px solid $primary-warm;
+          padding-left: 0.75rem;
+        }
+
+        &:hover {
+          color: $primary-warm;
+        }
+
+        .fa-solid {
+          font-size: 0.875rem;
+          margin-right: 0.5rem;
+          vertical-align: middle;
+        }
+      }
+
+      .dropdown {
+        button {
+          color: $gray;
+          font-size: 0.875rem;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          font-weight: 500;
+          background: none;
+          border: none;
+          padding: 0.5rem 0;
+          padding-left: 1rem;
+          text-align: left;
+          width: 100%;
+          transition: color 0.3s ease;
+          display: flex;
+          align-items: center;
+
+          &:hover {
+            color: $primary-warm;
+          }
+
+          .fa-solid {
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+          }
+        }
+
+        .dropdown-menu {
+          background-color: $white;
+          border: none;
+          border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          width: 100%;
+          margin-top: 0.25rem;
+          min-width: 200px;
+          padding: 0.5rem 0;
+
+          .dropdown-item {
+            padding: 0.5rem 1rem;
+
+            .dropdown-link {
+              color: $gray;
+              font-size: 0.875rem;
+              text-transform: uppercase;
+              letter-spacing: 1.5px;
+              font-weight: 500;
+              text-decoration: none;
+              transition: color 0.3s ease;
+              display: block;
+              width: 100%;
+              text-align: left;
+              padding: 0.5rem 1rem;
+              border: none;
+              background: transparent;
+              cursor: pointer;
+
+              &:hover {
+                color: $primary-warm;
+                background-color: rgba($primary-warm, 0.1);
+              }
+            }
+
+            // Special styling for logout button
+            button.dropdown-link {
+              border: none;
+              background: transparent;
+              width: 100%;
+              text-align: left;
+              font-family: inherit;
+              font-size: inherit;
+              font-weight: inherit;
+              letter-spacing: inherit;
+              transition: all 0.3s ease;
+
+              &:hover {
+                color: $primary-warm;
+                background-color: rgba($primary-warm, 0.1);
+              }
+
+              &:focus {
+                outline: none;
+                box-shadow: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Fade-in animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

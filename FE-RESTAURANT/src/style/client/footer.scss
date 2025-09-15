@@ -1,0 +1,171 @@
+// Warm color palette (consistent with ClientHeader.scss and Home.scss)
+$primary-warm: #e07b39; // Warm orange (matches --earthy-red)
+$secondary-warm: #f4a261; // Soft peach (matches #d9a566)
+$dark: #2c2c2c; // Dark background
+$gray: #a0aec0; // Light gray for text (replaces text-gray-300)
+$gray-dark: #4a5568; // Darker gray for border and footer text
+$white: #ffffff; // White
+
+// Footer
+footer {
+  width: 100%;
+  background-color: $dark;
+  color: $white;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+
+    @media (min-width: 768px) {
+      padding: 3rem 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      // Section styling
+      div {
+        h3 {
+          font-family: "Playfair Display", serif;
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+          color: $white;
+        }
+
+        p {
+          color: $gray;
+          font-size: 0.875rem;
+          line-height: 1.6;
+        }
+
+        // Contact Section
+        ul.space-y-3 {
+          li {
+            display: flex;
+            align-items: flex-start;
+
+            svg {
+              height: 1.25rem;
+              width: 1.25rem;
+              margin-right: 0.5rem;
+              color: $secondary-warm;
+              flex-shrink: 0;
+
+              &.mt-0\.5 {
+                margin-top: 0.125rem;
+              }
+            }
+
+            span {
+              color: $gray;
+              font-size: 0.875rem;
+            }
+
+            a {
+              color: $gray;
+              font-size: 0.875rem;
+              text-decoration: none;
+              transition: color 0.3s ease;
+
+              &:hover {
+                color: $white;
+              }
+            }
+          }
+        }
+
+        // Hours Section
+        ul.space-y-2 {
+          li {
+            display: flex;
+            align-items: flex-start;
+
+            svg {
+              height: 1.25rem;
+              width: 1.25rem;
+              margin-right: 0.5rem;
+              color: $secondary-warm;
+              flex-shrink: 0;
+
+              &.mt-0\.5 {
+                margin-top: 0.125rem;
+              }
+            }
+
+            div {
+              color: $gray;
+              font-size: 0.875rem;
+
+              p.font-medium {
+                font-weight: 500;
+              }
+            }
+          }
+        }
+
+        // Follow Us Section
+        .space-x-4 {
+          display: flex;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+
+          a {
+            height: 2.5rem;
+            width: 2.5rem;
+            border-radius: 50%;
+            background-color: $secondary-warm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: $primary-warm;
+            }
+
+            svg {
+              height: 1.25rem;
+              width: 1.25rem;
+              color: $dark;
+            }
+          }
+        }
+
+        a.text-gray {
+          color: $gray;
+          font-size: 0.875rem;
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+    }
+
+    // Footer Bottom
+    .border-t {
+      border-top: 1px solid $gray-dark;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      text-align: center;
+
+      p {
+        color: $gray-dark;
+        font-size: 0.875rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,236 @@
+/* Menu Display Styles */
+.menu-display {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card Hover Effects */
+.dish-card, .combo-card {
+  transition: all 0.3s ease;
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+.dish-card:hover, .combo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Image Styling */
+.dish-card .card-img-top, .combo-card .card-img-top {
+  transition: transform 0.3s ease;
+}
+
+.dish-card:hover .card-img-top, .combo-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Tab Styling */
+.nav-pills .nav-link {
+  border-radius: 25px !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link.active {
+  background: linear-gradient(135deg, #007bff, #0056b3) !important;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.nav-pills .nav-link:not(.active) {
+  background: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+  border: 1px solid rgba(0, 123, 255, 0.2);
+}
+
+.nav-pills .nav-link:not(.active):hover {
+  background: rgba(0, 123, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Category Tabs */
+.nav-tabs .nav-link {
+  border-radius: 20px 20px 0 0 !important;
+  font-weight: 500;
+  margin-right: 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+  background: linear-gradient(135deg, #28a745, #20c997) !important;
+  color: white !important;
+  border-color: #28a745 !important;
+}
+
+.nav-tabs .nav-link:not(.active) {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+  border-color: rgba(40, 167, 69, 0.2);
+}
+
+.nav-tabs .nav-link:not(.active):hover {
+  background: rgba(40, 167, 69, 0.2);
+  border-color: rgba(40, 167, 69, 0.3);
+}
+
+/* Price Styling */
+.price-display {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* Badge Styling */
+.badge {
+  font-size: 0.75em;
+  font-weight: 500;
+}
+
+/* Button Styling */
+.btn-outline-primary {
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary {
+  border-radius: 20px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+.btn-outline-info {
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-info:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+}
+
+/* Modal Styling */
+.modal-content {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
+}
+
+.modal-header .btn-close {
+  filter: invert(1);
+}
+
+/* Empty State Styling */
+.empty-state {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.empty-state i {
+  opacity: 0.3;
+  margin-bottom: 20px;
+}
+
+/* Combo Items List */
+.combo-items-preview {
+  background: rgba(248, 249, 250, 0.8);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.combo-items-preview small {
+  line-height: 1.6;
+}
+
+/* Card Body Spacing */
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+  
+  .nav-pills .nav-link {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+  }
+  
+  .dish-card, .combo-card {
+    margin-bottom: 20px;
+  }
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Status Badges */
+.status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-badge.unavailable {
+  background: rgba(108, 117, 125, 0.9);
+  color: white;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus States */
+.btn:focus, .nav-link:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
+}

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.0</version> <!-- Cân nhắc cập nhật phiên bản ổn định hơn nếu cần -->
+		<version>3.3.0</version> 
 		<relativePath/> 
 	</parent>
 	<groupId>com.poly</groupId>
@@ -14,7 +14,7 @@
 	<name>RESTAURANT</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version> <!-- Đổi về 17 nếu 21 gây vấn đề tương thích -->
+		<java.version>17</java.version> 
 	</properties>
 	<dependencies>
 		<!-- Spring Boot Starters -->
